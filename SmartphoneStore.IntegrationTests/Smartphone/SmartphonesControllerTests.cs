@@ -90,4 +90,22 @@ public class SmartphonesControllerTests : BaseTest
         var deletedInDb = SqlDbContext.Smartphones.First();
         deletedInDb.IsDeleted.Should().BeTrue(); 
     }
+
+    [Fact]
+    public async Task GetAllAsync_ReturnsPaginatedList()
+    {
+        SqlDbContext.Smartphones.Add(new SmartphoneDao { Brand = "Apple", ModelName = "iPhone 13", Price = 800, ReleaseDate = DateTime.UtcNow, StorageGB = 128 });
+        SqlDbContext.Smartphones.Add(new SmartphoneDao { Brand = "Samsung", ModelName = "S22", Price = 700, ReleaseDate = DateTime.UtcNow, StorageGB = 128 });
+        SqlDbContext.Smartphones.Add(new SmartphoneDao { Brand = "Nokia", ModelName = "3310", Price = 50, ReleaseDate = DateTime.UtcNow, StorageGB = 1, IsDeleted = true });
+        await SqlDbContext.SaveChangesAsync();
+
+        var response = await _httpClient.GetAsync("/api/v1/smartphones?page=1&pageSize=10");
+
+        response.StatusCode.Should().Be(HttpStatusCode.OK);
+        var content = await response.Content.ReadAsStringAsync();
+        var result = JsonConvert.DeserializeObject<IEnumerable<GetSmartphone>>(content);
+
+        result.Should().NotBeNull();
+        result.Should().HaveCount(2);
+    }
 }

@@ -1,0 +1,16 @@
+# Папки Visual Studio
+.vs/
+.vscode/
+
+# Зібраний код
+bin/
+obj/
+
+# Результати тестів
+TestResults/
+*.trx
+
+# Тимчасові файли
+*.user
+*.userosscache
+*.sln.docstates
