@@ -1,0 +1,17 @@
+C:\Users\sashk\source\repos\SmartphoneStore.Api\SmartphoneStore.Orchestrator\bin\Debug\net8.0\SmartphoneStore.Orchestrator.deps.json
+C:\Users\sashk\source\repos\SmartphoneStore.Api\SmartphoneStore.Orchestrator\bin\Debug\net8.0\SmartphoneStore.Orchestrator.dll
+C:\Users\sashk\source\repos\SmartphoneStore.Api\SmartphoneStore.Orchestrator\bin\Debug\net8.0\SmartphoneStore.Orchestrator.pdb
+C:\Users\sashk\source\repos\SmartphoneStore.Api\SmartphoneStore.Orchestrator\bin\Debug\net8.0\SmartphoneStore.Dal.dll
+C:\Users\sashk\source\repos\SmartphoneStore.Api\SmartphoneStore.Orchestrator\bin\Debug\net8.0\SmartphoneStore.Model.dll
+C:\Users\sashk\source\repos\SmartphoneStore.Api\SmartphoneStore.Orchestrator\bin\Debug\net8.0\SmartphoneStore.Dal.pdb
+C:\Users\sashk\source\repos\SmartphoneStore.Api\SmartphoneStore.Orchestrator\bin\Debug\net8.0\SmartphoneStore.Model.pdb
+C:\Users\sashk\source\repos\SmartphoneStore.Api\SmartphoneStore.Orchestrator\obj\Debug\net8.0\SmartphoneStore.Orchestrator.csproj.AssemblyReference.cache
+C:\Users\sashk\source\repos\SmartphoneStore.Api\SmartphoneStore.Orchestrator\obj\Debug\net8.0\SmartphoneStore.Orchestrator.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\sashk\source\repos\SmartphoneStore.Api\SmartphoneStore.Orchestrator\obj\Debug\net8.0\SmartphoneStore.Orchestrator.AssemblyInfoInputs.cache
+C:\Users\sashk\source\repos\SmartphoneStore.Api\SmartphoneStore.Orchestrator\obj\Debug\net8.0\SmartphoneStore.Orchestrator.AssemblyInfo.cs
+C:\Users\sashk\source\repos\SmartphoneStore.Api\SmartphoneStore.Orchestrator\obj\Debug\net8.0\SmartphoneStore.Orchestrator.csproj.CoreCompileInputs.cache
+C:\Users\sashk\source\repos\SmartphoneStore.Api\SmartphoneStore.Orchestrator\obj\Debug\net8.0\Smartpho.B3248100.Up2Date
+C:\Users\sashk\source\repos\SmartphoneStore.Api\SmartphoneStore.Orchestrator\obj\Debug\net8.0\SmartphoneStore.Orchestrator.dll
+C:\Users\sashk\source\repos\SmartphoneStore.Api\SmartphoneStore.Orchestrator\obj\Debug\net8.0\refint\SmartphoneStore.Orchestrator.dll
+C:\Users\sashk\source\repos\SmartphoneStore.Api\SmartphoneStore.Orchestrator\obj\Debug\net8.0\SmartphoneStore.Orchestrator.pdb
+C:\Users\sashk\source\repos\SmartphoneStore.Api\SmartphoneStore.Orchestrator\obj\Debug\net8.0\ref\SmartphoneStore.Orchestrator.dll

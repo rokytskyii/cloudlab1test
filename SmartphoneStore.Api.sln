@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.37111.16 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartphoneStore.Api", "SmartphoneStore.Api\SmartphoneStore.Api.csproj", "{758A7FE5-CA4A-48CA-9118-8936F77E692C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartphoneStore.Model", "SmartphoneStore.Model\SmartphoneStore.Model.csproj", "{4CFE0885-4886-414E-9AF5-77BFD8A689B5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartphoneStore.Dal", "SmartphoneStore.Dal\SmartphoneStore.Dal.csproj", "{A42D19EB-1901-4A69-A9C1-0ED234257803}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartphoneStore.Orchestrator", "SmartphoneStore.Orchestrator\SmartphoneStore.Orchestrator.csproj", "{365A4AC6-6C60-4A82-94A6-B819C884FC52}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartphoneStore.OrchestratorTests", "SmartphoneStore.OrchestratorTests\SmartphoneStore.OrchestratorTests.csproj", "{2A5BD5B9-BD6B-401F-ADA4-EDF5DC184F3A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartphoneStore.IntegrationTests", "SmartphoneStore.IntegrationTests\SmartphoneStore.IntegrationTests.csproj", "{384B8C51-84AC-4897-9D6B-9E38FF63862A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8EC462FD-D22E-90A8-E5CE-7E832BA40C5D}"
+	ProjectSection(SolutionItems) = preProject
+		.runsettings = .runsettings
+		docker-compose.yml = docker-compose.yml
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{758A7FE5-CA4A-48CA-9118-8936F77E692C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{758A7FE5-CA4A-48CA-9118-8936F77E692C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{758A7FE5-CA4A-48CA-9118-8936F77E692C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{758A7FE5-CA4A-48CA-9118-8936F77E692C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CFE0885-4886-414E-9AF5-77BFD8A689B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CFE0885-4886-414E-9AF5-77BFD8A689B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CFE0885-4886-414E-9AF5-77BFD8A689B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CFE0885-4886-414E-9AF5-77BFD8A689B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A42D19EB-1901-4A69-A9C1-0ED234257803}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A42D19EB-1901-4A69-A9C1-0ED234257803}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A42D19EB-1901-4A69-A9C1-0ED234257803}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A42D19EB-1901-4A69-A9C1-0ED234257803}.Release|Any CPU.Build.0 = Release|Any CPU
+		{365A4AC6-6C60-4A82-94A6-B819C884FC52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{365A4AC6-6C60-4A82-94A6-B819C884FC52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{365A4AC6-6C60-4A82-94A6-B819C884FC52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{365A4AC6-6C60-4A82-94A6-B819C884FC52}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A5BD5B9-BD6B-401F-ADA4-EDF5DC184F3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A5BD5B9-BD6B-401F-ADA4-EDF5DC184F3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A5BD5B9-BD6B-401F-ADA4-EDF5DC184F3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A5BD5B9-BD6B-401F-ADA4-EDF5DC184F3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{384B8C51-84AC-4897-9D6B-9E38FF63862A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{384B8C51-84AC-4897-9D6B-9E38FF63862A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{384B8C51-84AC-4897-9D6B-9E38FF63862A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{384B8C51-84AC-4897-9D6B-9E38FF63862A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7CC3B75C-D5A0-4A00-A521-B0FCBC465553}
+	EndGlobalSection
+EndGlobal
