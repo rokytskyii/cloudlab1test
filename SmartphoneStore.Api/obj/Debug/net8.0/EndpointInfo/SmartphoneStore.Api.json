@@ -151,6 +151,151 @@
           }
         }
       }
+    },
+    "/api/v1/tablets": {
+      "post": {
+        "tags": [
+          "Tablets"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateTablet"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateTablet"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateTablet"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Tablets"
+        ],
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 10
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/tablets/{id}": {
+      "get": {
+        "tags": [
+          "Tablets"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Tablets"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateTablet"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateTablet"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateTablet"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Tablets"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -187,6 +332,40 @@
             "minimum": 8,
             "type": "integer",
             "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateTablet": {
+        "required": [
+          "brand",
+          "hasStylus",
+          "modelName"
+        ],
+        "type": "object",
+        "properties": {
+          "brand": {
+            "maxLength": 50,
+            "minLength": 2,
+            "type": "string"
+          },
+          "modelName": {
+            "maxLength": 100,
+            "minLength": 2,
+            "type": "string"
+          },
+          "price": {
+            "maximum": 10000,
+            "minimum": 1,
+            "type": "number",
+            "format": "double"
+          },
+          "releaseDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "hasStylus": {
+            "type": "boolean"
           }
         },
         "additionalProperties": false
@@ -228,6 +407,45 @@
           "id": {
             "type": "integer",
             "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UpdateTablet": {
+        "required": [
+          "brand",
+          "hasStylus",
+          "id",
+          "modelName"
+        ],
+        "type": "object",
+        "properties": {
+          "brand": {
+            "maxLength": 50,
+            "minLength": 2,
+            "type": "string"
+          },
+          "modelName": {
+            "maxLength": 100,
+            "minLength": 2,
+            "type": "string"
+          },
+          "price": {
+            "maximum": 10000,
+            "minimum": 1,
+            "type": "number",
+            "format": "double"
+          },
+          "releaseDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "hasStylus": {
+            "type": "boolean"
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid"
           }
         },
         "additionalProperties": false
