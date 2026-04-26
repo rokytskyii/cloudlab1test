@@ -12,11 +12,13 @@ public class BaseTest : IDisposable
     private IHostBuilder _server;
     private IHost _host;
     protected SqlDbContext SqlDbContext;
+    protected CosmosDbContext CosmosDbContext;
 
     public HttpClient GetClient()
     {
         _host = _server.Start();
         SqlDbContext = _host.Services.GetRequiredService<SqlDbContext>();
+        CosmosDbContext = _host.Services.GetRequiredService<CosmosDbContext>();
         return _host.GetTestClient();
     }
 
@@ -37,5 +39,6 @@ public class BaseTest : IDisposable
         _host.StopAsync().GetAwaiter().GetResult();
         _host.Dispose();
         SqlDbContext.Dispose();
+        CosmosDbContext.Dispose();
     }
 }

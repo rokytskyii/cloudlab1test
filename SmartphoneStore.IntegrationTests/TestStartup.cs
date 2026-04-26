@@ -16,8 +16,11 @@ public class TestStartup : Startup
 
     protected override void ConfigureDb(IServiceCollection services)
     {
-        var context = ConfigureDb<SqlDbContext>();
-        services.AddSingleton(context.MockedDbContext);
+        var sqlContext = ConfigureDb<SqlDbContext>();
+        services.AddSingleton(sqlContext.MockedDbContext);
+
+        var cosmosContext = ConfigureDb<CosmosDbContext>();
+        services.AddSingleton(cosmosContext.MockedDbContext);
     }
 
     private IMockedDbContextBuilder<T> ConfigureDb<T>()
