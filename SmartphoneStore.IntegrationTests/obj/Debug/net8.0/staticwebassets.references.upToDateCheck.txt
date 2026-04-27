@@ -9,3 +9,4 @@ C:\Users\sashk\source\repos\SmartphoneStore.Api\SmartphoneStore.Api\obj\Debug\ne
 C:\Users\sashk\source\repos\SmartphoneStore.Api\SmartphoneStore.Api\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\sashk\source\repos\SmartphoneStore.Api\SmartphoneStore.Api\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\sashk\source\repos\SmartphoneStore.Api\SmartphoneStore.Api\obj\Debug\net8.0\staticwebassets.build.json
+C:\Users\sashk\source\repos\SmartphoneStore.Api\SmartphoneStore.Api\obj\Debug\net8.0\staticwebassets.build.json

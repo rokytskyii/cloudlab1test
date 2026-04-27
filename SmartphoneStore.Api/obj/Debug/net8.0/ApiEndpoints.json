@@ -178,5 +178,84 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SmartphoneStore.Api.TabletSmartphone.TabletSmartphonesController",
+    "Method": "GetLinkedSmartphonesAsync",
+    "RelativePath": "api/v1/tablets/{tabletId}/smartphones",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "tabletId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SmartphoneStore.Api.TabletSmartphone.TabletSmartphonesController",
+    "Method": "CreateLinkAsync",
+    "RelativePath": "api/v1/tablets/{tabletId}/smartphones/{smartphoneId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "tabletId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "smartphoneId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SmartphoneStore.Api.TabletSmartphone.TabletSmartphonesController",
+    "Method": "GetSmartphoneFromTabletAsync",
+    "RelativePath": "api/v1/tablets/{tabletId}/smartphones/{smartphoneId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "tabletId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "smartphoneId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SmartphoneStore.Api.TabletSmartphone.TabletSmartphonesController",
+    "Method": "DeleteLinkAsync",
+    "RelativePath": "api/v1/tablets/{tabletId}/smartphones/{smartphoneId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "tabletId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "smartphoneId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   }
 ]
