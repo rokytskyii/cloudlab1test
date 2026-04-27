@@ -53,13 +53,13 @@ public class TabletRepository : ITabletRepository
         return _mapper.Map<TabletDto>(dao);
     }
 
-    public async Task DeleteAsync(Guid id)
+    public async Task<TabletDto> DeleteAsync(Guid id)
     {
-        var dao = await _context.Tablets.FirstOrDefaultAsync(x => x.Id == id);
-        if (dao != null)
-        {
-            _context.Tablets.Remove(dao);
-            await _context.SaveChangesAsync();
-        }
+        var dao = new TabletDao { Id = id };
+
+        _context.Tablets.Remove(dao);
+        await _context.SaveChangesAsync();
+
+        return _mapper.Map<TabletDto>(dao);
     }
 }

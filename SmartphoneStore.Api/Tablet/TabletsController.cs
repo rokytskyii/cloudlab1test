@@ -46,18 +46,17 @@ public class TabletsController : ControllerBase
     [HttpPut("{id:guid}")]
     public async Task<IActionResult> UpdateAsync(Guid id, UpdateTablet request)
     {
-        if (id != request.Id) return BadRequest("ID в URL не співпадає з ID в тілі запиту.");
-
         var dto = _mapper.Map<TabletDto>(request);
+        dto.Id = id;
+
         var updated = await _orchestrator.UpdateAsync(dto);
-        var response = _mapper.Map<GetTablet>(updated);
-        return Ok(response);
+        return Ok(_mapper.Map<GetTablet>(updated));
     }
 
     [HttpDelete("{id:guid}")]
     public async Task<IActionResult> DeleteAsync(Guid id)
     {
-        await _orchestrator.DeleteAsync(id);
-        return NoContent();
+        var deletedTablet = await _orchestrator.DeleteAsync(id);
+        return Ok(_mapper.Map<GetTablet>(deletedTablet));
     }
 }
