@@ -15,3 +15,5 @@ C:\Users\sashk\source\repos\SmartphoneStore.Api\SmartphoneStore.Orchestrator\obj
 C:\Users\sashk\source\repos\SmartphoneStore.Api\SmartphoneStore.Orchestrator\obj\Debug\net8.0\refint\SmartphoneStore.Orchestrator.dll
 C:\Users\sashk\source\repos\SmartphoneStore.Api\SmartphoneStore.Orchestrator\obj\Debug\net8.0\SmartphoneStore.Orchestrator.pdb
 C:\Users\sashk\source\repos\SmartphoneStore.Api\SmartphoneStore.Orchestrator\obj\Debug\net8.0\ref\SmartphoneStore.Orchestrator.dll
+C:\Users\sashk\source\repos\SmartphoneStore.Api\SmartphoneStore.Orchestrator\bin\Debug\net8.0\SmartphoneStore.Platform.dll
+C:\Users\sashk\source\repos\SmartphoneStore.Api\SmartphoneStore.Orchestrator\bin\Debug\net8.0\SmartphoneStore.Platform.pdb

@@ -9851,6 +9851,7 @@
   "projectFileDependencyGroups": {
     "net8.0": [
       "AutoMapper >= 16.1.1",
+      "Azure.Storage.Blobs >= 12.27.0",
       "Microsoft.AspNetCore.OpenApi >= 8.0.25",
       "Microsoft.EntityFrameworkCore >= 8.0.0",
       "Microsoft.EntityFrameworkCore.Cosmos >= 8.0.0",
@@ -9929,6 +9930,10 @@
           "AutoMapper": {
             "target": "Package",
             "version": "[16.1.1, )"
+          },
+          "Azure.Storage.Blobs": {
+            "target": "Package",
+            "version": "[12.27.0, )"
           },
           "Microsoft.AspNetCore.OpenApi": {
             "target": "Package",

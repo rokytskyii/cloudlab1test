@@ -1,5 +1,9 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using Azure.Storage.Blobs;
+using SmartphoneStore.Model.TabletSmartphone;
+using SmartphoneStore.Orchestrator.TabletSmartphone;
+using SmartphoneStore.Platform.BlobStorage;
 using SmartphoneStore.Api.Smartphone;
 using SmartphoneStore.Api.Tablet;
 using SmartphoneStore.Dal;
@@ -30,6 +34,7 @@ public class Startup
         services.AddScoped<ISmartphoneRepository, SmartphoneRepository>();
         services.AddScoped<ITabletOrchestrator, TabletOrchestrator>();
         services.AddScoped<ITabletRepository, TabletRepository>();
+        services.AddScoped<ITabletSmartphoneOrchestrator, TabletSmartphoneOrchestrator>();
 
         services.AddAutoMapper(config => config.AddProfiles(
             new List<Profile>
@@ -40,6 +45,7 @@ public class Startup
             }));
 
         ConfigureDb(services);
+        ConfigureEdgeServices(services);
     }
 
     protected virtual void ConfigureDb(IServiceCollection services)
@@ -49,6 +55,18 @@ public class Startup
 
         services.AddDbContext<CosmosDbContext>(
             c => c.UseCosmos(_configuration.GetConnectionString("CosmosConnection"), "SmartphoneStoreNoSql"));
+    }
+
+    protected virtual void ConfigureEdgeServices(IServiceCollection services)
+    {
+        var blobConfig = new BlobConfiguration();
+
+        _configuration.Bind("AzureBlobContainerConnectionString", blobConfig);
+        services.AddSingleton(blobConfig);
+
+        var client = new BlobServiceClient(blobConfig.ConnectionString);
+        services.AddScoped<IBlobStorage, BlobStorage>();
+        services.AddScoped(_ => client);
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

@@ -194,3 +194,9 @@ C:\Users\sashk\source\repos\SmartphoneStore.Api\SmartphoneStore.IntegrationTests
 C:\Users\sashk\source\repos\SmartphoneStore.Api\SmartphoneStore.IntegrationTests\bin\Debug\net8.0\runtimes\win-x64\native\msvcp140.dll
 C:\Users\sashk\source\repos\SmartphoneStore.Api\SmartphoneStore.IntegrationTests\bin\Debug\net8.0\runtimes\win-x64\native\vcruntime140.dll
 C:\Users\sashk\source\repos\SmartphoneStore.Api\SmartphoneStore.IntegrationTests\bin\Debug\net8.0\runtimes\win-x64\native\vcruntime140_1.dll
+C:\Users\sashk\source\repos\SmartphoneStore.Api\SmartphoneStore.IntegrationTests\bin\Debug\net8.0\Azure.Storage.Blobs.dll
+C:\Users\sashk\source\repos\SmartphoneStore.Api\SmartphoneStore.IntegrationTests\bin\Debug\net8.0\Azure.Storage.Common.dll
+C:\Users\sashk\source\repos\SmartphoneStore.Api\SmartphoneStore.IntegrationTests\bin\Debug\net8.0\System.ClientModel.dll
+C:\Users\sashk\source\repos\SmartphoneStore.Api\SmartphoneStore.IntegrationTests\bin\Debug\net8.0\System.IO.Hashing.dll
+C:\Users\sashk\source\repos\SmartphoneStore.Api\SmartphoneStore.IntegrationTests\bin\Debug\net8.0\SmartphoneStore.Platform.dll
+C:\Users\sashk\source\repos\SmartphoneStore.Api\SmartphoneStore.IntegrationTests\bin\Debug\net8.0\SmartphoneStore.Platform.pdb
