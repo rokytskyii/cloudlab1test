@@ -55,9 +55,14 @@ public class TabletRepository : ITabletRepository
 
     public async Task<TabletDto> DeleteAsync(Guid id)
     {
-        var dao = _context.Tablets.Local.FirstOrDefault(x => x.Id == id);
+        var localEntity = _context.Tablets.Local.FirstOrDefault(x => x.Id == id);
 
-        if (dao == null)
+        TabletDao dao;
+        if (localEntity != null)
+        {
+            dao = localEntity;
+        }
+        else
         {
             dao = new TabletDao { Id = id };
             _context.Tablets.Attach(dao);

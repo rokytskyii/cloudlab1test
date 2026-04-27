@@ -56,7 +56,7 @@ public class TabletsController : ControllerBase
     [HttpDelete("{id:guid}")]
     public async Task<IActionResult> DeleteAsync(Guid id)
     {
-        var deletedTablet = await _orchestrator.DeleteAsync(id);
-        return Ok(_mapper.Map<GetTablet>(deletedTablet));
+        var deleted = await _orchestrator.DeleteAsync(id);
+        return Ok(_mapper.Map<GetTablet>(deleted));
     }
 }

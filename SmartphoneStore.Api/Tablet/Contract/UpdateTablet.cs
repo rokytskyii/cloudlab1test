@@ -2,8 +2,9 @@
 
 namespace SmartphoneStore.Api.Tablet.Contract;
 
-public class UpdateTablet : CreateTablet
+public class UpdateTablet
 {
+
     [Required]
     [MinLength(2), MaxLength(50)]
     public string Brand { get; set; }
@@ -20,5 +21,4 @@ public class UpdateTablet : CreateTablet
 
     [Required]
     public bool HasStylus { get; set; }
-    public Guid Id { get; set; }
 }

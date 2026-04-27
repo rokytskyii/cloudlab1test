@@ -68,14 +68,21 @@ public class TabletsControllerTests : BaseTest
     }
 
     [Fact]
-    public async Task UpdateAsync_ReturnsOkAndUpdatesItem()
+    public async Task UpdateAsync_ValidData_ReturnsOkAndUpdatesItem()
     {
-        var dao = new TabletDao { Id = Guid.NewGuid(), Brand = "Old", ModelName = "Old", Price = 100, ReleaseDate = DateTime.UtcNow };
+        var dao = new TabletDao { Id = Guid.NewGuid(), Brand = "OldBrand", ModelName = "OldModel", Price = 100, ReleaseDate = DateTime.UtcNow };
         CosmosDbContext.Tablets.Add(dao);
         await CosmosDbContext.SaveChangesAsync();
         CosmosDbContext.ChangeTracker.Clear();
 
-        var request = new UpdateTablet { Brand = "NewBrand", ModelName = "NewModel", Price = 200, ReleaseDate = DateTime.UtcNow, HasStylus = true };
+        var request = new UpdateTablet
+        {
+            Brand = "NewBrand",
+            ModelName = "NewModel",
+            Price = 200,
+            ReleaseDate = DateTime.UtcNow,
+            HasStylus = false
+        };
         var content = new StringContent(JsonConvert.SerializeObject(request), Encoding.UTF8, "application/json");
 
         var response = await _httpClient.PutAsync($"/api/v1/tablets/{dao.Id}", content);
@@ -84,11 +91,12 @@ public class TabletsControllerTests : BaseTest
 
         var jsonResponse = await response.Content.ReadAsStringAsync();
         var result = JsonConvert.DeserializeObject<GetTablet>(jsonResponse);
-        result.Should().NotBeNull();
-        result.Brand.Should().Be("NewBrand");
 
-        var updatedInDb = await CosmosDbContext.Tablets.FirstOrDefaultAsync(x => x.Id == dao.Id);
-        updatedInDb.Brand.Should().Be("NewBrand");
+        result.Brand.Should().Be(request.Brand);
+
+        var updatedInDb = await CosmosDbContext.Tablets.AsNoTracking().FirstOrDefaultAsync(x => x.Id == dao.Id);
+        updatedInDb.Brand.Should().Be(request.Brand);
+        updatedInDb.Price.Should().Be(request.Price);
     }
 
     [Fact]
@@ -97,8 +105,7 @@ public class TabletsControllerTests : BaseTest
         var dao = new TabletDao { Id = Guid.NewGuid(), Brand = "Acer", ModelName = "Zen", Price = 150, ReleaseDate = DateTime.UtcNow };
         CosmosDbContext.Tablets.Add(dao);
         await CosmosDbContext.SaveChangesAsync();
-
-        CosmosDbContext.ChangeTracker.Clear();
+        CosmosDbContext.ChangeTracker.Clear(); 
 
         var response = await _httpClient.DeleteAsync($"/api/v1/tablets/{dao.Id}");
 
@@ -106,10 +113,12 @@ public class TabletsControllerTests : BaseTest
 
         var jsonResponse = await response.Content.ReadAsStringAsync();
         var result = JsonConvert.DeserializeObject<GetTablet>(jsonResponse);
+
         result.Should().NotBeNull();
         result.Id.Should().Be(dao.Id);
         result.Brand.Should().Be("Acer");
 
-        CosmosDbContext.Tablets.Count().Should().Be(0);
+        var existsInDb = await CosmosDbContext.Tablets.AnyAsync(x => x.Id == dao.Id);
+        existsInDb.Should().BeFalse();
     }
 }

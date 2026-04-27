@@ -45,7 +45,6 @@ public class TabletOrchestrator : ITabletOrchestrator
         if (existing == null) throw new EntityNotFoundException($"Tablet with id {id} not found.");
 
         await _repository.DeleteAsync(id);
-
         return existing;
     }
 }
