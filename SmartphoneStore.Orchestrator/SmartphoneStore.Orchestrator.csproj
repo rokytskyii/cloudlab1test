@@ -9,6 +9,7 @@
   <ItemGroup>
     <ProjectReference Include="..\SmartphoneStore.Dal\SmartphoneStore.Dal.csproj" />
     <ProjectReference Include="..\SmartphoneStore.Model\SmartphoneStore.Model.csproj" />
+    <ProjectReference Include="..\SmartphoneStore.Platform\SmartphoneStore.Platform.csproj" />
   </ItemGroup>
 
 </Project>

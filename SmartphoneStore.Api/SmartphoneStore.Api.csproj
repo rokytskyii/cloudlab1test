@@ -23,6 +23,7 @@
     <ProjectReference Include="..\SmartphoneStore.Dal\SmartphoneStore.Dal.csproj" />
     <ProjectReference Include="..\SmartphoneStore.Model\SmartphoneStore.Model.csproj" />
     <ProjectReference Include="..\SmartphoneStore.Orchestrator\SmartphoneStore.Orchestrator.csproj" />
+    <ProjectReference Include="..\SmartphoneStore.Platform\SmartphoneStore.Platform.csproj" />
   </ItemGroup>
 
 </Project>

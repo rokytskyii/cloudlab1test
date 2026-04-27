@@ -415,7 +415,6 @@
         "required": [
           "brand",
           "hasStylus",
-          "id",
           "modelName"
         ],
         "type": "object",
@@ -442,10 +441,6 @@
           },
           "hasStylus": {
             "type": "boolean"
-          },
-          "id": {
-            "type": "string",
-            "format": "uuid"
           }
         },
         "additionalProperties": false
