@@ -98,6 +98,8 @@ public class TabletsControllerTests : BaseTest
         CosmosDbContext.Tablets.Add(dao);
         await CosmosDbContext.SaveChangesAsync();
 
+        CosmosDbContext.ChangeTracker.Clear();
+
         var response = await _httpClient.DeleteAsync($"/api/v1/tablets/{dao.Id}");
 
         response.StatusCode.Should().Be(HttpStatusCode.OK);
