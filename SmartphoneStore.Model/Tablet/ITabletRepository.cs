@@ -6,5 +6,5 @@ public interface ITabletRepository
     Task<TabletDto> GetByIdAsync(Guid id);
     Task<IEnumerable<TabletDto>> GetAllAsync(int pageNumber, int pageSize);
     Task<TabletDto> UpdateAsync(TabletDto tablet);
-    Task DeleteAsync(Guid id);
+    Task<TabletDto> DeleteAsync(Guid id);
 }

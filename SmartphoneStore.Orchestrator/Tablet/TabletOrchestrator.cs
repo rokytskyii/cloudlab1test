@@ -39,11 +39,13 @@ public class TabletOrchestrator : ITabletOrchestrator
         return await _repository.UpdateAsync(tablet);
     }
 
-    public async Task DeleteAsync(Guid id)
+    public async Task<TabletDto> DeleteAsync(Guid id)
     {
         var existing = await _repository.GetByIdAsync(id);
         if (existing == null) throw new EntityNotFoundException($"Tablet with id {id} not found.");
 
         await _repository.DeleteAsync(id);
+
+        return existing;
     }
 }
