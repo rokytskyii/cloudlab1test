@@ -1,15 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Microsoft.Extensions.Configuration;
+﻿using EntityFrameworkCore.Testing.Common.Helpers;
+using EntityFrameworkCore.Testing.Moq.Helpers;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Moq;
 using SmartphoneStore.Api;
 using SmartphoneStore.Dal;
+using SmartphoneStore.Model.MessageBroker;
 using SmartphoneStore.Platform.BlobStorage;
-using EntityFrameworkCore.Testing.Common.Helpers;
-using EntityFrameworkCore.Testing.Moq.Helpers;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace SmartphoneStore.IntegrationTests;
 
@@ -52,6 +53,21 @@ public class TestStartup : Startup
             .ReturnsAsync(new List<int>());
 
         services.AddScoped<IBlobStorage>(_ => mockBlobStorage.Object);
+
+        var mockPublisher = new Mock<IPublisher>();
+        mockPublisher.Setup(x => x.PublishAsync(It.IsAny<string>()))
+            .Returns(Task.CompletedTask);
+
+        services.AddSingleton<IPublisher>(mockPublisher.Object);
+
+        var mockSubscriber = new Mock<ISubscriber>();
+        mockSubscriber.Setup(x => x.Data)
+            .Returns(new List<string>());
+
+        mockSubscriber.Setup(x => x.SubscribeAsync())
+            .Returns(Task.CompletedTask);
+
+        services.AddSingleton<ISubscriber>(mockSubscriber.Object);
     }
 
     private IMockedDbContextBuilder<T> ConfigureDb<T>()

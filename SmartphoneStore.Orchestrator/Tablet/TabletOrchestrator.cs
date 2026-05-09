@@ -1,20 +1,27 @@
 ﻿using SmartphoneStore.Model.Exception;
 using SmartphoneStore.Model.Tablet;
+using SmartphoneStore.Model.MessageBroker;
 
 namespace SmartphoneStore.Orchestrator.Tablet;
 
 public class TabletOrchestrator : ITabletOrchestrator
 {
     private readonly ITabletRepository _repository;
+    private readonly IPublisher _publisher;
 
-    public TabletOrchestrator(ITabletRepository repository)
+    public TabletOrchestrator(ITabletRepository repository, IPublisher publisher)
     {
         _repository = repository;
+        _publisher = publisher;
     }
 
     public async Task<TabletDto> CreateAsync(TabletDto tablet)
     {
-        return await _repository.CreateAsync(tablet);
+        var result = await _repository.CreateAsync(tablet);
+
+        await _publisher.PublishAsync($"Created Tablet with Id: {result.Id}");
+
+        return result;
     }
 
     public async Task<TabletDto> GetByIdAsync(Guid id)
@@ -36,7 +43,11 @@ public class TabletOrchestrator : ITabletOrchestrator
         var existing = await _repository.GetByIdAsync(tablet.Id);
         if (existing == null) throw new EntityNotFoundException($"Tablet with id {tablet.Id} not found.");
 
-        return await _repository.UpdateAsync(tablet);
+        var result = await _repository.UpdateAsync(tablet);
+
+        await _publisher.PublishAsync($"Updated Tablet with Id: {result.Id}");
+
+        return result;
     }
 
     public async Task<TabletDto> DeleteAsync(Guid id)

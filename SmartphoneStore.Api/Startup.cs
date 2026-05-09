@@ -72,10 +72,10 @@ public class Startup
         services.AddScoped(_ => client);
 
         services.AddSingleton(new ServiceBusClient(_configuration.GetConnectionString("ServiceBusConnectionString")));
-        services.AddScoped<IPublisher, SmartphoneStatsPublisher>();
+        services.AddScoped<IPublisher, DeviceStatsPublisher>();
 
         var subscriberClient = new ServiceBusClient(_configuration.GetConnectionString("ServiceBusConnectionString"));
-        var subscriber = new SmartphoneStatsSubscriber(subscriberClient);
+        var subscriber = new DeviceStatsSubscriber(subscriberClient);
 
         subscriber.SubscribeAsync().GetAwaiter().GetResult();
 
