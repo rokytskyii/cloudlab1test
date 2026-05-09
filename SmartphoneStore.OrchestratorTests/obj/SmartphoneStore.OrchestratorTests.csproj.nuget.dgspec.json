@@ -361,7 +361,11 @@
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\sashk\\source\\repos\\SmartphoneStore.Api\\SmartphoneStore.Model\\SmartphoneStore.Model.csproj": {
+                "projectPath": "C:\\Users\\sashk\\source\\repos\\SmartphoneStore.Api\\SmartphoneStore.Model\\SmartphoneStore.Model.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -380,6 +384,10 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "Azure.Messaging.ServiceBus": {
+              "target": "Package",
+              "version": "[7.20.1, )"
+            },
             "Azure.Storage.Blobs": {
               "target": "Package",
               "version": "[12.27.0, )"

@@ -1,20 +1,27 @@
 ﻿using SmartphoneStore.Model.Exception;
 using SmartphoneStore.Model.Smartphone;
+using SmartphoneStore.Model.MessageBroker;
 
 namespace SmartphoneStore.Orchestrator.Smartphone;
 
 public class SmartphoneOrchestrator : ISmartphoneOrchestrator
 {
     private readonly ISmartphoneRepository _repository;
+    private readonly IPublisher _publisher;
 
-    public SmartphoneOrchestrator(ISmartphoneRepository repository)
+    public SmartphoneOrchestrator(ISmartphoneRepository repository, IPublisher publisher)
     {
         _repository = repository;
+        _publisher = publisher;
     }
 
     public async Task<SmartphoneDto> CreateAsync(SmartphoneDto smartphone)
     {
-        return await _repository.CreateAsync(smartphone);
+        var result = await _repository.CreateAsync(smartphone);
+
+        await _publisher.PublishAsync($"Created Smartphone with Id: {result.Id}");
+
+        return result;
     }
 
     public async Task<SmartphoneDto> GetByIdAsync(int id)
@@ -42,7 +49,11 @@ public class SmartphoneOrchestrator : ISmartphoneOrchestrator
             throw new EntityNotFoundException($"Smartphone with id {smartphone.Id} not found.");
         }
 
-        return await _repository.UpdateAsync(smartphone);
+        var result = await _repository.UpdateAsync(smartphone);
+
+        await _publisher.PublishAsync($"Updated Smartphone with Id: {result.Id}");
+
+        return result;
     }
 
     public async Task DeleteAsync(int id)

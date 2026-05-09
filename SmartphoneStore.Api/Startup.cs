@@ -1,18 +1,21 @@
 ﻿using AutoMapper;
-using Microsoft.EntityFrameworkCore;
+using Azure.Messaging.ServiceBus;
 using Azure.Storage.Blobs;
-using SmartphoneStore.Model.TabletSmartphone;
-using SmartphoneStore.Orchestrator.TabletSmartphone;
-using SmartphoneStore.Platform.BlobStorage;
+using Microsoft.EntityFrameworkCore;
 using SmartphoneStore.Api.Smartphone;
 using SmartphoneStore.Api.Tablet;
 using SmartphoneStore.Dal;
 using SmartphoneStore.Dal.Smartphone;
 using SmartphoneStore.Dal.Tablet;
+using SmartphoneStore.Model.MessageBroker;
 using SmartphoneStore.Model.Smartphone;
 using SmartphoneStore.Model.Tablet;
+using SmartphoneStore.Model.TabletSmartphone;
 using SmartphoneStore.Orchestrator.Smartphone;
 using SmartphoneStore.Orchestrator.Tablet;
+using SmartphoneStore.Orchestrator.TabletSmartphone;
+using SmartphoneStore.Platform.BlobStorage;
+using SmartphoneStore.Platform.MessageBroker;
 
 namespace SmartphoneStore.Api;
 
@@ -67,6 +70,16 @@ public class Startup
         var client = new BlobServiceClient(blobConfig.ConnectionString);
         services.AddScoped<IBlobStorage, BlobStorage>();
         services.AddScoped(_ => client);
+
+        services.AddSingleton(new ServiceBusClient(_configuration.GetConnectionString("ServiceBusConnectionString")));
+        services.AddScoped<IPublisher, SmartphoneStatsPublisher>();
+
+        var subscriberClient = new ServiceBusClient(_configuration.GetConnectionString("ServiceBusConnectionString"));
+        var subscriber = new SmartphoneStatsSubscriber(subscriberClient);
+
+        subscriber.SubscribeAsync().GetAwaiter().GetResult();
+
+        services.AddSingleton<ISubscriber>(subscriber);
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

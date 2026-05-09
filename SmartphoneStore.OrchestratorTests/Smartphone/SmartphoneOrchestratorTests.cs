@@ -1,6 +1,7 @@
 ﻿using FluentAssertions;
 using Moq;
 using SmartphoneStore.Model.Exception;
+using SmartphoneStore.Model.MessageBroker;
 using SmartphoneStore.Model.Smartphone;
 using SmartphoneStore.Orchestrator.Smartphone;
 
@@ -58,5 +59,24 @@ public class SmartphoneOrchestratorTests
 
         result.Should().NotBeNull();
         result.Should().BeEquivalentTo(expectedSmartphone);
+    }
+
+    [Fact]
+    public async Task CreateAsync_ShouldPublishMessage_WhenSmartphoneCreated()
+    {
+        var mockRepo = new Mock<ISmartphoneRepository>();
+        var mockPublisher = new Mock<IPublisher>();
+
+        var newSmartphone = new SmartphoneDto { Id = 1, Brand = "TestBrand" };
+        mockRepo.Setup(r => r.CreateAsync(It.IsAny<SmartphoneDto>())).ReturnsAsync(newSmartphone);
+
+        var orchestrator = new SmartphoneOrchestrator(mockRepo.Object, mockPublisher.Object);
+
+        var result = await orchestrator.CreateAsync(newSmartphone);
+
+        result.Should().NotBeNull();
+        result.Id.Should().Be(1);
+
+        mockPublisher.Verify(p => p.PublishAsync(It.IsAny<string>()), Times.Once);
     }
 }
