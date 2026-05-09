@@ -1,18 +1,22 @@
 ﻿using System.Net;
 using Xunit;
 using FluentAssertions;
-using SmartphoneStore.IntegrationTests;
 
 namespace SmartphoneStore.IntegrationTests.SmartphoneStats;
 
-public class SmartphoneStatsControllerTests : BaseTest 
+public class SmartphoneStatsControllerTests : BaseTest
 {
+    private readonly HttpClient _httpClient;
+
+    public SmartphoneStatsControllerTests()
+    {
+        _httpClient = InitTestServer().GetClient();
+    }
+
     [Fact]
     public async Task GetStats_ShouldReturnOk_AndListOfStrings()
     {
-        var client = CreateClient();
-
-        var response = await client.GetAsync("/api/v1/smartphones-stats");
+        var response = await _httpClient.GetAsync("/api/v1/smartphones-stats");
 
         response.StatusCode.Should().Be(HttpStatusCode.OK);
 

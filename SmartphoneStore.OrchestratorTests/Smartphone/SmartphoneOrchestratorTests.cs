@@ -14,12 +14,13 @@ public class SmartphoneOrchestratorTests
     {
         const int id = 1;
         var repository = new Mock<ISmartphoneRepository>();
+        var mockPublisher = new Mock<IPublisher>();
 
         repository
             .Setup(x => x.GetByIdAsync(id))!
-            .ReturnsAsync((SmartphoneDto)null);
+            .ReturnsAsync((SmartphoneDto?)null);
 
-        var orchestrator = new SmartphoneOrchestrator(repository.Object);
+        var orchestrator = new SmartphoneOrchestrator(repository.Object, mockPublisher.Object);
 
         await Assert.ThrowsAsync<EntityNotFoundException>(async () => await orchestrator.GetByIdAsync(id));
     }
@@ -48,12 +49,13 @@ public class SmartphoneOrchestratorTests
         };
 
         var repository = new Mock<ISmartphoneRepository>();
+        var mockPublisher = new Mock<IPublisher>();
 
         repository
             .Setup(x => x.GetByIdAsync(id))
             .ReturnsAsync(smartphone);
 
-        var orchestrator = new SmartphoneOrchestrator(repository.Object);
+        var orchestrator = new SmartphoneOrchestrator(repository.Object, mockPublisher.Object);
 
         var result = await orchestrator.GetByIdAsync(id);
 
