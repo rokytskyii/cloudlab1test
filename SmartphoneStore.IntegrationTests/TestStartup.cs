@@ -16,6 +16,8 @@ namespace SmartphoneStore.IntegrationTests;
 
 public class TestStartup : Startup
 {
+    public static readonly List<string> MockedMessages = new();
+
     public TestStartup(IConfiguration configuration) : base(configuration)
     {
     }
@@ -56,13 +58,14 @@ public class TestStartup : Startup
 
         var mockPublisher = new Mock<IPublisher>();
         mockPublisher.Setup(x => x.PublishAsync(It.IsAny<string>()))
+            .Callback<string>(msg => MockedMessages.Add(msg))
             .Returns(Task.CompletedTask);
 
         services.AddSingleton<IPublisher>(mockPublisher.Object);
 
         var mockSubscriber = new Mock<ISubscriber>();
         mockSubscriber.Setup(x => x.Data)
-            .Returns(new List<string>());
+            .Returns(MockedMessages);
 
         mockSubscriber.Setup(x => x.SubscribeAsync())
             .Returns(Task.CompletedTask);
